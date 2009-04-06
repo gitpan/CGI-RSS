@@ -1,4 +1,5 @@
 RSS.pm
+RSS.pod
 t/01_load_them.t
 MANIFEST
 README
@@ -6,4 +7,5 @@ example.xml
 t/02_xmllint.t
 Makefile.PL
 Changes
+t/03_rss_validator.t
 META.yml                                 Module meta-data (added by MakeMaker)
