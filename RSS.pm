@@ -6,7 +6,7 @@ use base 'CGI';
 use Date::Manip;
 use B::Deparse;
 
-our $VERSION = 0.95;
+our $VERSION = '0.9600';
 
 BEGIN {
     # NOTE: there's voodoo in this block, don't judge me. :(
@@ -18,6 +18,12 @@ BEGIN {
 
     my $sub = eval "sub $deparsed" or die $@;
     do { no warnings 'redefine'; *CGI::_make_tag_func = $sub; }
+}
+
+BEGIN {
+    unless( eval {Date_TimeZone(); 1} ) {
+        $ENV{TZ} = "UTC" if $@ =~ m/unable to determine Time Zone/i;
+    }
 }
 
 # TODO: this collection of tag names is hardly "correct" or complete
