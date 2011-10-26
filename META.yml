@@ -1,28 +1,29 @@
---- #YAML:1.0
-name:               CGI-RSS
-version:            0.9600
-abstract:           ~
-author:  []
-license:            lgpl2
-distribution_type:  module
-configure_requires:
-    ExtUtils::MakeMaker:  0
+---
+abstract: unknown
+author:
+  - unknown
 build_requires:
-    ExtUtils::MakeMaker:  0
-requires:
-    B::Deparse:   0
-    Date::Manip:  0
-    perl:         5.008
-resources:
-    repository:  http://github.com/jettero/cgi--rss/tree
-no_index:
-    directory:
-        - t
-        - inc
-generated_by:       ExtUtils::MakeMaker version 6.50
-meta-spec:
-    url:      http://module-build.sourceforge.net/META-spec-v1.4.html
-    version:  1.4
+  ExtUtils::MakeMaker: 0
+configure_requires:
+  ExtUtils::MakeMaker: 0
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.112150'
 keywords:
-    - cgi
-    - rss
+  - cgi
+  - rss
+license: unknown
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: CGI-RSS
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  B::Deparse: 0
+  Date::Manip: 0
+  perl: 5.008
+resources:
+  repository: http://github.com/jettero/cgi--rss/tree
+version: 0.9651

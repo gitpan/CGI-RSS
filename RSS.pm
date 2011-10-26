@@ -6,7 +6,16 @@ use base 'CGI';
 use Date::Manip;
 use B::Deparse;
 
-our $VERSION = '0.9600';
+our $VERSION = '0.9651';
+our $pubDate_format = '%a, %d %b %Y %H:%M:%S %Z';
+
+sub pubDate_format {
+    my $class_or_instance = shift;
+    my $proposed = shift;
+
+    $pubDate_format = $proposed;
+    $pubDate_format
+}
 
 BEGIN {
     # NOTE: there's voodoo in this block, don't judge me. :(
@@ -46,11 +55,14 @@ sub make_tags {
     $CGI::EXPORT{$_} = 1 for @TAGS;
 }
 
+sub import { make_tags() }
+
 sub date {
     my $this = shift;
-    if( my $pd = &ParseDate($_[-1]) ) {
-        my $rfc822_date = &UnixDate($pd, '%a, %d %b %Y %H:%M:%S %Z');
-        return $this->pubDate($rfc822_date);
+
+    if( my $pd = ParseDate($_[-1]) ) {
+        my $date = UnixDate($pd, $pubDate_format);
+        return $this->pubDate($date);
     }
 
     $this->pubDate(@_);
@@ -58,8 +70,6 @@ sub date {
 
 sub header {
     my $this = shift;
-
-    &make_tags;
 
     return $this->SUPER::header("application/xml") . "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n";
 }
