@@ -26,4 +26,4 @@ requires:
   perl: 5.008
 resources:
   repository: http://github.com/jettero/cgi--rss/tree
-version: 0.9652
+version: 0.9654
